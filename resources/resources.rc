@@ -1,0 +1,4 @@
+#include <windows.h>
+
+101 ICON "assets/micOn.ico"
+102 ICON "assets/micOff.ico"
