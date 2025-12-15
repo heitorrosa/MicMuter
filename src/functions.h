@@ -2,7 +2,6 @@
 #define FUNCTIONS_H
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include <windows.h>
@@ -15,20 +14,14 @@
 #define ID_BEEP 1002
 #define ID_EXIT 1003
 
-extern bool g_beepEnabled, g_waitingForKey;
-extern int g_hotkey;
-extern volatile bool g_running;
+extern bool g_beepEnabled, g_waitingForKey, g_running;
+extern int g_hotkey, g_muted;
 extern HWND g_mainWindow;
 extern HICON g_iconOn, g_iconOff;
 
-void muteAudio(bool muted);
-void playBeep(bool muted);
-const char* keyToString(int vkey);
-int stringToKey(const char* str);
-int getKeyInput(void);
-void loadSettings(void);
-void saveSettings(void);
-void loadIcons(void);
-void updateIcon(bool muted);
+void muteAudio(bool m), playBeep(bool m), loadSettings(void), saveSettings(void);
+void loadIcons(void), updateIcon(bool m), createTrayIcon(HWND h);
+const char* keyToString(int v);
+int stringToKey(const char* s), getKeyInput(void);
 
 #endif
