@@ -53,7 +53,19 @@ int getKeyInput(void) {
     return VK_RCONTROL;
 }
 
+void saveSettings(void) {
+    FILE* f = fopen("config.ini", "w");
+    if(f) { fprintf(f, "hotkey=%s\nbeep=%d\n", keyToString(g_hotkey), g_beepEnabled); fclose(f); }
+}
+
+void ensureConfig(void) {
+    FILE* f = fopen("config.ini", "r");
+    if(f) { fclose(f); return; }
+    saveSettings();
+}
+
 void loadSettings(void) {
+    ensureConfig();
     FILE* f = fopen("config.ini", "r");
     if(!f) return;
     char l[256], k[32];
@@ -62,11 +74,6 @@ void loadSettings(void) {
         else sscanf(l, "beep=%d", (int*)&g_beepEnabled);
     }
     fclose(f);
-}
-
-void saveSettings(void) {
-    FILE* f = fopen("config.ini", "w");
-    if(f) { fprintf(f, "hotkey=%s\nbeep=%d\n", keyToString(g_hotkey), g_beepEnabled); fclose(f); }
 }
 
 void loadIcons(void) {

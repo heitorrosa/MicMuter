@@ -19,7 +19,7 @@ extern int g_hotkey, g_muted;
 extern HWND g_mainWindow;
 extern HICON g_iconOn, g_iconOff;
 
-void muteAudio(bool m), playBeep(bool m), loadSettings(void), saveSettings(void);
+void muteAudio(bool m), playBeep(bool m), loadSettings(void), saveSettings(void), ensureConfig(void);
 void loadIcons(void), updateIcon(bool m), createTrayIcon(HWND h);
 const char* keyToString(int v);
 int stringToKey(const char* s), getKeyInput(void);
